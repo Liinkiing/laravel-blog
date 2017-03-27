@@ -7,6 +7,24 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## About this project
+
+This project was made for learning purposes. I always wanted to test the Laravel framework (coming from a Symfony background). 
+I immediatly started to like it (despite the fact that the framework tends to hide you a lot of things, but when you go 
+deeper on the source code, you can discover how things are really made).
+
+I've written some fixtures (factories) for the database, so you can use `php artisan db:seed`
+to populate your db.
+
+Just
+```
+$ git clone https://github.com/Liinkiing/laravel-blog.git
+$ cd blog
+$ composer install
+$ php artisan serve
+```
+and you're ready to go!
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:

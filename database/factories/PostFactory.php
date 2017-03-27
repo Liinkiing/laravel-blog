@@ -14,11 +14,12 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(\App\Post::class, function (Faker\Generator $faker) {
 
+    $date = $faker->date();
     return [
         'title' => $faker->title,
         'slug' => $faker->slug(),
         'content' => $faker->realText(),
-        'created_at' => $faker->date(),
-        'updated_at' => $faker->date()
+        'created_at' => $date,
+        'updated_at' => $date
     ];
 });
