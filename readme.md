@@ -19,7 +19,7 @@ to populate your db.
 Just
 ```
 $ git clone https://github.com/Liinkiing/laravel-blog.git
-$ cd blog
+$ cd laravel-blog
 $ composer install
 $ npm install
 $ php artisan migrate
