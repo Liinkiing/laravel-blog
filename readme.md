@@ -21,6 +21,7 @@ Just
 $ git clone https://github.com/Liinkiing/laravel-blog.git
 $ cd blog
 $ composer install
+$ npm install
 $ php artisan serve
 ```
 and you're ready to go!
