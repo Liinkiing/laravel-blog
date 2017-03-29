@@ -16,7 +16,7 @@ deeper on the source code, you can discover how things are really made).
 I've written some fixtures (factories) for the database, so you can use `php artisan db:seed`
 to populate your db.
 
-Just
+Just rename the `.env.example` to `.env` and put your credentials here
 ```
 $ git clone https://github.com/Liinkiing/laravel-blog.git
 $ cd laravel-blog
