@@ -22,9 +22,11 @@ $ git clone https://github.com/Liinkiing/laravel-blog.git
 $ cd blog
 $ composer install
 $ npm install
+$ php artisan migrate
+$ php artisan db:seed
 $ php artisan serve
 ```
-and you're ready to go!
+and you're ready to go! You should have a basic database structure for your blog. The seeding takes care of adding users, then it adds posts with the previously created users as authors. Finally, it add a random range of comments to those posts (some posts can have no comments), with random authors.
 
 ## About Laravel
 
