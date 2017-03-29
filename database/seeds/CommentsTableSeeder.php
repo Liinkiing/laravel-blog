@@ -13,11 +13,12 @@ class CommentsTableSeeder extends Seeder
     {
         /** @var \App\Post $post */
 
-        $nbComments = random_int(2,8);
         $author_ids = \App\User::pluck('id')->toArray();
         $posts = \App\Post::all();
 
         foreach ($posts as $post) {
+            $nbComments = random_int(2,8);
+
             if((bool)random_int(0,1)) {
                 for ($i = 0; $i <= $nbComments; $i++) {
                     /** @var \App\Comment $comment */

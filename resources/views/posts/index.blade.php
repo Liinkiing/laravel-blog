@@ -7,8 +7,9 @@
             @forelse($posts as $post)
                 @component('components.post')
                     @slot('title')<a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>@endslot
-                    @slot('author') {{ $post->author->name }} @endslot
-                    @slot('date') {{ $post->created_at->diffForHumans() }} @endslot
+                    @slot('comments_count'){{ $post->comments->count() }}@endslot
+                    @slot('author'){{ $post->author->name }}@endslot
+                    @slot('date'){{ $post->created_at->diffForHumans() }}@endslot
                     {{ $post->content }}
                 @endcomponent
             @empty

@@ -25,6 +25,7 @@ class Post extends Model
 {
     const PER_PAGE = 10;
     protected $fillable = ['title', 'slug', 'content'];
+    protected $with = ['comments', 'author'];
 
     public function getRouteKeyName()
     {

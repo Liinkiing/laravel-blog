@@ -11,7 +11,8 @@
     <div class="comments">
         @forelse($post->comments as $comment)
             @component('components.comment')
-                {{--@slot('author')  @endslot--}}
+                @slot('author') {{ $comment->author->name }} ({{ $comment->author->email }}) @endslot
+                {{ $comment->content }}
             @endcomponent
         @empty
             <h2>Aucun commentaires</h2>
