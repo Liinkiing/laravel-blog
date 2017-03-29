@@ -9,11 +9,13 @@
         {{ $post->content }}
     @endcomponent
     <div class="comments">
-        {{--@forelse($post->comments as $comment)--}}
-
-        {{--@empty--}}
-
-        {{--@endforelse--}}
+        @forelse($post->comments as $comment)
+            @component('components.comment')
+                {{--@slot('author')  @endslot--}}
+            @endcomponent
+        @empty
+            <h2>Aucun commentaires</h2>
+        @endforelse
     </div>
 
 @endsection
