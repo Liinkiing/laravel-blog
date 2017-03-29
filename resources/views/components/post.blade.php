@@ -1,6 +1,5 @@
-<div class="post">
-    <div class="post-title">{{ $title or "Default title" }}</div>
-    <div class="post-author">{{ $author }}</div>
-    <div class="post-content">{{ $slot }}</div>
-    <div class="post-date">{{ $date or "Default date" }}</div>
+<div class="blog-post">
+    <h2 class="blog-post-title">{{ $title or "Default title" }}</h2>
+    <p class="blog-post-meta">{{ $date or new Carbon\Carbon() }}, par <a href="#">{{ $author }}</a></p>
+    {{ $slot }}
 </div>

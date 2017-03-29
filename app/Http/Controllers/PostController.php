@@ -15,10 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-//        /** @var Collection $posts */
-        $posts = Post::with('author')->groupBy(\DB::raw('DATE(created_at)'))->get();
-        dd($posts);
-//        dd($dates);
+        $posts = Post::with('author')->latest()->paginate(10);
         return view('posts.index', compact('posts'));
     }
 
@@ -51,7 +48,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-
+        return view('posts.show', compact('post'));
     }
 
     /**

@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use Barryvdh\Debugbar\ServiceProvider as SPDebugBar;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         */
+
+        Carbon::setLocale(config('app.locale'));
     }
 
     /**
@@ -32,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         if ($this->app->environment() !== 'production') {
+            $this->app->register(SPDebugBar::class);
             $this->app->register(IdeHelperServiceProvider::class);
         }
     }

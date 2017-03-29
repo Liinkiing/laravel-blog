@@ -26,8 +26,17 @@ class Post extends Model
     const PER_PAGE = 10;
     protected $fillable = ['title', 'slug', 'content'];
 
+    public function getRouteKeyName()
+    {
+        return "slug";
+    }
+
     public function author() {
         return $this->belongsTo(User::class);
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
     }
 
     public function setTitleAttribute($value) {

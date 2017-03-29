@@ -12,13 +12,11 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(\App\Post::class, function (Faker\Generator $faker) {
+$factory->define(\App\Comment::class, function (Faker\Generator $faker) {
 
     $date = $faker->date();
     return [
-        'title' => $faker->text(5),
-        'slug' => $faker->slug(),
-        'content' => $faker->realText(),
+        'content' => $faker->text(50),
         'created_at' => $date,
         'updated_at' => $date
     ];
