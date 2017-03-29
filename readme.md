@@ -29,6 +29,8 @@ $ php artisan serve
 ```
 and you're ready to go! You should have a basic database structure for your blog. The seeding takes care of adding users, then it adds posts with the previously created users as authors. Finally, it add a random range of comments to those posts (some posts can have no comments), with random authors.
 
+At the moment, the main route is located at `/blog/posts`
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
