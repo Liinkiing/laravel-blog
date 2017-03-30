@@ -15,10 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 })->name('homepage');
 
+Route::get('profile/me', 'DashboardController@profile')->name('profile.me');
+
 Route::group(['prefix' => 'blog'], function() {
-    Route::resource('posts', 'PostController');
+    Route::get('/posts', 'PostController@index')->name('posts.index');
+    Route::get('/post/{post}', 'PostController@show')->name('posts.show');
 });
 
 Auth::routes();
 
-Route::get('/profile/me', 'DashboardController@profile')->name('profile.me');
+Route::group(['prefix' => 'admin'], function() {
+    Route::resource('posts', 'Admin\PostController', ['except' => 'show', 'as' => 'admin']);
+});

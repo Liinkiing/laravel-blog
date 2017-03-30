@@ -6,6 +6,7 @@ use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Barryvdh\Debugbar\ServiceProvider as SPDebugBar;
+use Zizaco\Entrust\EntrustServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -39,5 +40,6 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(SPDebugBar::class);
             $this->app->register(IdeHelperServiceProvider::class);
         }
+        $this->app->register(EntrustServiceProvider::class);
     }
 }

@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "liinkiing/laravel-blog",
+    "description": "A Laravel blog made for learning purposes",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
@@ -11,7 +11,8 @@
         "caouecs/laravel-lang": "~3.0",
         "doctrine/dbal": "~2.3",
         "laravel/framework": "5.4.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "zizaco/entrust": "5.2.x-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
