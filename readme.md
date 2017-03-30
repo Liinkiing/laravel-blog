@@ -16,15 +16,20 @@ deeper on the source code, you can discover how things are really made).
 I've written some fixtures (factories) for the database, so you can use `php artisan db:seed`
 to populate your db.
 
-Just
+Just rename the `.env.example` to `.env` and put your credentials here
 ```
 $ git clone https://github.com/Liinkiing/laravel-blog.git
-$ cd blog
+$ cd laravel-blog
 $ composer install
+$ php artisan key:generate
+$ php artisan migrate
+$ php artisan db:seed
 $ npm install
 $ php artisan serve
 ```
-and you're ready to go!
+and you're ready to go! You should have a basic database structure for your blog. The seeding takes care of adding users, then it adds posts with the previously created users as authors. Finally, it add a random range of comments to those posts (some posts can have no comments), with random authors.
+
+At the moment, the main route is located at `/blog/posts`
 
 ## About Laravel
 
