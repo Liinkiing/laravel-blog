@@ -1,3 +1,10 @@
-body {
-  background: yellow;
+.nav form button {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-weight: inherit;
+  &:hover {
+    cursor: pointer;
+  }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -30,14 +31,22 @@ class RegisterController extends Controller
      *
      * @return string
      */
-    protected function redirectTo() {
-        return route('posts.index');
+    protected function redirectTo()
+    {
+        return route('login');
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -50,32 +59,40 @@ class RegisterController extends Controller
     }
 
 
-
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $validator = Validator::make($data, [
             'name' => 'required|max:255',
+            'username' => 'required|between:6,30',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
+        $validator->setCustomMessages([
+            'username.between' => 'Le pseudo doit être compris entre 6 et 30 caractères !',
+            'password.confirmed' => 'Les mots de passe ne correspondent pas !',
+            'email.unique' => 'L\'adresse mail est déjà utilisée ! Si vous avez oubliez votre mot de passe, veuillez 
+            <a href="' . route('password.request') . '">faire une demande de réinitialisation</a> de votre mot de passe.',
+        ]);
+        return $validator;
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return User
+     * @param  array $data
+     * @return User|\Illuminate\Database\Eloquent\Model
      */
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);

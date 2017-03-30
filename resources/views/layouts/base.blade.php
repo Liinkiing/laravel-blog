@@ -14,6 +14,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/blog.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -28,30 +29,26 @@
 </div>
 
 <main class="container">
-    @if(Request::hasSession() && (Request::session()->has('success') || Request::session()->has('info')
-    || Request::session()->has('warning') || Request::session()->has('danger')))
+    @if(Request::hasSession() && (Session::has('errors') || Session::has('success') || Session::has('info')
+    || Session::has('warning') || Session::has('danger')))
         <div class="row justify-content-md-center">
             <div class="col-8">
+                @if(Session::has('errors'))
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach(Session::get('errors')->all() as $error)
+                                <li>{!! $error !!}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 @foreach(['success', 'info', 'warning', 'danger'] as $type)
-                    @if(Request::session()->has($type))
+                    @if(Session::has($type))
                         <div class="alert alert-{{ $type }}">
-                            {!! Request::session()->get($type) !!}
+                            {!! Session::get($type) !!}
                         </div>
                     @endif
                 @endforeach
-            </div>
-        </div>
-    @endif
-    @if(isset($errors) and $errors->count() > 0)
-        <div class="row justify-content-md-center">
-            <div class="col-8">
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
             </div>
         </div>
     @endif

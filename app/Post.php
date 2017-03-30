@@ -20,6 +20,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Post whereSlug($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Post whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Post whereUpdatedAt($value)
+ * @property int $author_id
+ * @property-read \App\User $author
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
+ * @method static \Illuminate\Database\Query\Builder|\App\Post whereAuthorId($value)
  */
 class Post extends Model
 {

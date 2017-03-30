@@ -25,9 +25,14 @@ class LoginController extends Controller
         return route('profile.me');
     }
 
+    public function username()
+    {
+        return 'username';
+    }
+
     public function authenticated(Request $request, $user)
     {
-        \Session::flash('success', trans('auth.login_successful', ['name' => $user->name]));
+        return redirect()->intended($this->redirectPath())->with('success', trans('auth.login_successful', ['name' => $user->name]));
     }
 
     public function logout(Request $request)
