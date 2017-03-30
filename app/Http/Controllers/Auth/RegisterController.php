@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -22,12 +23,16 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+
     /**
-     * Where to redirect users after registration.
+     * Here, I replace the method used in the RegistersUsers trait
+     * to modify the behaviour and implements my own logic
      *
-     * @var string
+     * @return string
      */
-    protected $redirectTo = '/home';
+    protected function redirectTo() {
+        return route('posts.index');
+    }
 
     /**
      * Create a new controller instance.
@@ -38,6 +43,13 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+
+    protected function registered(Request $request, $user)
+    {
+        \Session::flash('success', trans('auth.register_successful'));
+    }
+
+
 
     /**
      * Get a validator for an incoming registration request.

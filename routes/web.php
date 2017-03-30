@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'blog'], function() {
     Route::resource('posts', 'PostController');
 });
+
+Auth::routes();
+
+Route::get('/profile/me', 'DashboardController@profile')->name('profile.me');
